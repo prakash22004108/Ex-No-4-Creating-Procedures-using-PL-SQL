@@ -1,7 +1,6 @@
-# Ex. No: 4 Creating Procedures using PL/SQL
-
+# Ex-No-4-Creating-Procedures-using-PL-SQL
+## Date:
 ### AIM: To create a procedure using PL/SQL.
-
 ### Steps:
 1. Create employee table with following attributes (empid NUMBER, empname VARCHAR(10), dept VARCHAR(10),salary NUMBER);
 2. Create a procedure named as insert_employee data.
@@ -9,27 +8,34 @@
 4. End the procedure.
 5. Call the insert_employee data procedure to insert the values into the employee table.
 6. Display the employee table
-
 ### Program:
 ```
-mysql> delimiter //
-mysql> create procedure Insert_employee()
-    -> begin
-    -> declare empid int;
-    ->  declare empname varchar(10);
-    -> declare dept varchar(10);
-    -> declare salary int;
-    -> insert into employee1(empid,empname,dept,salary)values(1,'arun','HR',1000000);    -> insert into employee1(empid,empname,dept,salary)values(1,'varun','glad',500000);
-    -> insert into employee1(empid,empname,dept,salary)values(3,'aisha','sales',600000);
-    -> end;
-    -> delimiter//
+SQL> CREATE TABLE ep(
+     empid NUMBER,
+     empname VARCHAR(10),
+     dept VARCHAR(10),
+     salary NUMBER
+    );
+CREATE OR REPLACE PROCEDURE emp_data AS
+    BEGIN
+    INSERT INTO ep(empid,empname,dept,salary)
+    values(1,'SHAKTHI','MD',10000000);
+    values(1,'ABISHEK','MD',10000000);
+    INSERT INTO ep(empid,empname,dept,salary)
+    values(2,'ARUN','HR',500000);
+    values(2,'DEVA','HR',500000);
+    INSERT INTO ep(empid,empname,dept,salary)
+    values(3,'DHANUSH','IT',200000);
+    values(3,'RAGAV','IT',200000);
+    COMMIT;
+   FOR emp_rec IN (SELECT * FROM ep)LOOP
+   DBMS_OUTPUT.PUT_LINE('EMPLOYEE ID:'||emp_rec.empid||',EMPLOYEE NAME:'|| emp_rec.empname||
+   ',DEPARTMENT:'||emp_rec.dept||',SALARY:'||emp_rec.salary);
+   END LOOP;
+   END;
+  /
 ```
-
 ### Output:
-![Screenshot 2023-10-05 160646](https://github.com/paulsamson18/Ex-No-4-Creating-Procedures-using-PL-SQL/assets/119405794/2935b19e-3f38-4d55-a288-466fe2509520)
-
-![Screenshot 2023-10-05 160609](https://github.com/paulsamson18/Ex-No-4-Creating-Procedures-using-PL-SQL/assets/119405794/05c18421-338d-4bf6-a82a-72ccb0d1dd3f)
-
-
+![WhatsApp Image 2023-09-26 at 23 54 26](https://github.com/ARUNKUMART9968/Ex-No-4-Creating-Procedures-using-PL-SQL/assets/121215794/50848e70-e38e-44fe-84d2-7f6e92d05db9)
 ### Result:
-Thus procedure using PL/SQL has created successfully.
+THE PROGRAM HAS BEEN IMPLEMENTED SUCCESSFULLY
